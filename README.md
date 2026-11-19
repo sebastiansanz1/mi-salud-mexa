@@ -44,3 +44,23 @@ App PWA de control de calorías y macros con enfoque en comida mexicana. Inspira
 ---
 
 ##  Estructura del proyecto
+mi-salud-mexa/
+├── index.html # Estructura principal de la app
+├── styles.css # Estilos con tema neón dark
+├── app.js # Lógica de la aplicación
+├── foods.json # Base de datos de 50 alimentos mexicanos
+├── manifest.json # Configuración PWA
+├── sw.js # Service Worker (offline)
+├── icon-192.png # Ícono PWA 192x192
+├── icon-512.png # Ícono PWA 512x512
+└── README.md
+
+
+---
+
+##  Instalación local
+
+1. **Clona el repositorio:**
+   ```bash
+   git clone https://github.com/sebastiansanz1/mi-salud-mexa.git
+   cd mi-salud-mexa
