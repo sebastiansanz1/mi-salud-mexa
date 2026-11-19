@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Mi Salud Mexa</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#0d0e12" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top Bar -->
+  <header class="app-header">
+    <div>
+      <span class="greeting">¡Qué onda, bro! 👋</span>
+      <h1 id="current-date">Lunes, 21 Sep</h1>
+    </div>
+    <div class="user-avatar">🔥</div>
+  </header>
+
+  <main class="main-content">
+    <!-- Hero Card: Anillo/Barra de Calorías -->
+    <section class="card hero-card">
+      <div class="cal-main-display">
+        <span class="cal-big" id="remaining-cal">2000</span>
+        <span class="cal-label">KCAL RESTANTES</span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="cal-progress" style="width: 0%;"></div>
+      </div>
+      <div class="cal-sub-grid">
+        <div class="sub-item">
+          <span class="sub-value" id="consumed-cal">0</span>
+          <span class="sub-label">Consumidas</span>
+        </div>
+        <div class="sub-divider"></div>
+        <div class="sub-item">
+          <span class="sub-value" id="burned-cal">0</span>
+          <span class="sub-label">Quemadas</span>
+        </div>
+      </div>
+
+      <!-- Macros Bars -->
+      <div class="macros-flex">
+        <div class="macro-pill">
+          <span class="m-title">Proteína</span>
+          <strong id="protein-count">0 / 150g</strong>
+        </div>
+        <div class="macro-pill">
+          <span class="m-title">Carbs</span>
+          <strong id="carbs-count">0 / 200g</strong>
+        </div>
+        <div class="macro-pill">
+          <span class="m-title">Grasas</span>
+          <strong id="fats-count">0 / 65g</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agua con Botón Rápido -->
+    <section class="card water-card">
+      <div class="card-header-flex">
+        <div class="water-title">
+          <span class="icon">💧</span>
+          <h3>Registro de Agua</h3>
+        </div>
+        <span class="water-badge" id="water-count">0 / 2.5 L</span>
+      </div>
+      <div class="water-actions">
+        <button class="btn-glass" onclick="addWater(250)">+250ml</button>
+        <button class="btn-glass" onclick="addWater(500)">+500ml</button>
+        <button class="btn-glass btn-reset" onclick="resetWater()">🔄</button>
+      </div>
+    </section>
+
+    <!-- Sección Diario de Comidas -->
+    <section class="card log-card">
+      <div class="card-header-flex">
+        <h3>🍳 Comidas de Hoy</h3>
+        <button class="btn-neon" id="btn-open-modal">+ Registro Rápido</button>
+      </div>
+      <ul class="item-list" id="food-list">
+        <li class="empty-state">No has registrado alimentos hoy.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Modal estilo Fitia para buscar comidas mexicanas -->
+  <div class="modal-overlay" id="food-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Añadir Comida Mexa</h2>
+        <button class="btn-close" id="btn-close-modal">✕</button>
+      </div>
+      <input type="text" id="food-search" class="search-input" placeholder="Buscar: huevo, atún, ramen, frijoles..." />
+      
+      <div class="search-results" id="search-results">
+        <!-- Se llena con la lista de comidas -->
+      </div>
+
+      <!-- Formulario colapsable movido aquí adentro -->
+      <details class="custom-food-accordion" style="margin-top: 15px;">
+        <summary style="color: var(--accent-cyan, #00f2fe); font-size: 13px; font-weight: 600; cursor: pointer; padding: 8px 0;">
+          ➕ ¿No encuentras tu comida? Agrégala manual
+        </summary>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+          <input type="text" id="custom-name" placeholder="Nombre (ej. Quesadillas de guisado)" class="search-input" />
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+            <input type="number" id="custom-cal" placeholder="Calorías (kcal)" class="search-input" />
+            <input type="number" id="custom-prot" placeholder="Proteína (g)" class="search-input" />
+            <input type="number" id="custom-carbs" placeholder="Carbs (g)" class="search-input" />
+            <input type="number" id="custom-fats" placeholder="Grasas (g)" class="search-input" />
+          </div>
+          <button class="btn-neon" onclick="submitCustomFood()">Guardar y Seleccionar</button>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Navegación Inferior Estilo Neón -->
+  <nav class="bottom-nav">
+    <button class="nav-item active">
+      <span class="nav-icon">📊</span>
+      <span class="nav-label">Diario</span>
+    </button>
+    <button class="nav-item">
+      <span class="nav-icon">🌮</span>
+      <span class="nav-label">Mexa Fit</span>
+    </button>
+    <button class="nav-item">
+      <span class="nav-icon">⚙️</span>
+      <span class="nav-label">Ajustes</span>
+    </button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+:root {
+  --bg-main: #0d0e12;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --accent-neon: #7000ff;
+  --accent-cyan: #00f2fe;
+  --green-fit: #00e676;
+  --text-main: #ffffff;
+  --text-muted: #8e8e93;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Header */
+.app-header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.greeting {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.app-header h1 {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-neon), var(--accent-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 15px rgba(112, 0, 255, 0.4);
+}
+
+/* Scroll Container */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 100px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+/* Hero Card (Calorías) */
+.hero-card {
+  background: linear-gradient(180deg, rgba(112, 0, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(112, 0, 255, 0.3);
+  text-align: center;
+}
+
+.cal-big {
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(180deg, #fff, var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  line-height: 1;
+}
+
+.cal-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  display: block;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-neon), var(--accent-cyan));
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+.cal-sub-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sub-value {
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+}
+
+.sub-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.sub-divider {
+  width: 1px;
+  height: 25px;
+  background: var(--card-border);
+}
+
+.macros-flex {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.macro-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 10px 5px;
+  border: 1px solid var(--card-border);
+}
+
+.m-title {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.macro-pill strong {
+  font-size: 12px;
+  color: #fff;
+}
+
+/* Water Section */
+.card-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.water-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.water-badge {
+  background: rgba(0, 242, 254, 0.1);
+  color: var(--accent-cyan);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.water-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-glass {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
+  color: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-reset {
+  flex: 0.3;
+}
+
+/* Buttons */
+.btn-neon {
+  background: linear-gradient(135deg, var(--accent-neon), #4f00bc);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(112, 0, 255, 0.3);
+  cursor: pointer;
+}
+
+/* Food List */
+.item-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.food-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+}
+
+.food-item-title {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+}
+
+.food-item-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.food-item-cal {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-fit);
+}
+
+.empty-state {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 15px;
+}
+
+/* Modal Estilo Fitia */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: none;
+  justify-content: flex-end;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #16171d;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  padding: 24px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid var(--card-border);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+}
+
+.search-results {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 50vh;
+}
+
+.search-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.search-card:active {
+  border-color: var(--accent-cyan);
+}
+
+/* Nav Bar */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: rgba(13, 14, 18, 0.9);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-item.active {
+  color: var(--accent-cyan);
+}
